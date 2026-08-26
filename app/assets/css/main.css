@@ -1,0 +1,32 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { scroll-behavior: smooth; background: #030c13; }
+  body { margin: 0; font-family: "Manrope", ui-sans-serif, system-ui, sans-serif; background: #030c13; }
+  :focus-visible { outline: 2px solid #ff5a1f; outline-offset: 4px; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+}
+
+@layer components {
+  .section-shell { @apply mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-20; }
+  .section-title { @apply text-3xl font-semibold tracking-[-0.035em] sm:text-4xl; }
+  .eyebrow { @apply text-xs font-bold uppercase tracking-[0.2em] text-orange; }
+  .nav-link { @apply text-sm text-slate-300 transition-colors hover:text-white; }
+  .mobile-link { @apply rounded-md px-3 py-3 text-lg text-slate-200 hover:bg-white/5; }
+  .button-primary { @apply inline-flex items-center justify-center rounded-md bg-orange px-7 py-4 text-sm font-bold text-white shadow-orange-glow transition hover:bg-[#ff6725] active:translate-y-px; }
+  .button-secondary { @apply inline-flex items-center justify-center rounded-md border border-slate-600 px-7 py-4 text-sm font-bold text-white transition hover:border-orange hover:bg-orange/5; }
+  .project-surface { @apply rounded-xl border border-white/10 bg-panel/70 shadow-[0_24px_80px_rgba(0,0,0,.24)] transition duration-300 hover:border-orange/30; }
+  .project-link { @apply inline-flex w-fit text-sm font-bold text-orange transition hover:text-[#ff7a42]; }
+  .mock-browser { background: radial-gradient(circle at 75% 75%,rgba(20,184,166,.13),transparent 34%),linear-gradient(145deg,#06121a,#071d27); }
+  .dashboard-bar { @apply rounded border border-teal-400/20 bg-gradient-to-t from-orange/30 to-teal-400/20; }
+  .mini-mock { background:linear-gradient(145deg,#cdd8e0,#8ea6b7); }
+  .mini-mock.travel { background:linear-gradient(145deg,#dceaf6,#6c94a5); }
+  .webgl-fallback { background:radial-gradient(circle,rgba(249,83,15,.28),transparent 26%),radial-gradient(circle,rgba(40,74,94,.8),transparent 63%); }
+}
+
+canvas { display:block; width:100%; height:100%; touch-action:pan-y; }
+@media (prefers-reduced-motion: reduce) { *,*::before,*::after { scroll-behavior:auto!important; animation-duration:.01ms!important; animation-iteration-count:1!important; transition-duration:.01ms!important; } }

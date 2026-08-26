@@ -13,7 +13,7 @@ onMounted(async () => {
 
 const addInstrument = async () => {
   if (name.value === "") return;
-  const { data, error } = await client
+  const { data } = await client
     .from("instruments")
     .insert({ name: name.value })
     .select()
@@ -39,7 +39,7 @@ const removeInstrument = async (id) => {
     </div>
 
     <form @submit.prevent="addInstrument">
-      <input v-model="name" type="text" />
+      <input v-model="name" type="text" >
       <button type="submit">Add</button>
     </form>
   </div>

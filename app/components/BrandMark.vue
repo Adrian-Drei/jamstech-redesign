@@ -1,0 +1,1 @@
+<template><span class="flex items-center gap-3 font-semibold tracking-tight text-warm-white"><span class="relative grid size-9 place-items-center font-black text-orange"><span class="absolute inset-0 skew-x-[-12deg] border border-orange/60"></span><span class="relative text-lg">JM</span></span><span class="text-sm sm:text-base">JAM'S TECH</span></span></template>
