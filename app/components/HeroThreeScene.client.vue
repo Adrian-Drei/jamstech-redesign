@@ -65,12 +65,15 @@ onMounted(async () => {
       context.closePath();
     };
 
-    const webonovaLogo = await new Promise<HTMLImageElement>((resolve, reject) => {
-      const image = new Image();
-      image.onload = () => resolve(image);
-      image.onerror = () => reject(new Error("Webonova logo could not be loaded"));
-      image.src = "/images/webonova-logo.png";
-    });
+    const webonovaLogo = await new Promise<HTMLImageElement>(
+      (resolve, reject) => {
+        const image = new Image();
+        image.onload = () => resolve(image);
+        image.onerror = () =>
+          reject(new Error("Webonova logo could not be loaded"));
+        image.src = "/images/webonova-logo.png";
+      },
+    );
 
     const panelTexture = makeTexture(900, 570, (context) => {
       const gradient = context.createLinearGradient(0, 0, 900, 570);
@@ -229,6 +232,9 @@ onMounted(async () => {
     let visible = !document.hidden;
     let lastX = 0;
     let lastY = 0;
+    let pointerDownX = 0;
+    let pointerDownY = 0;
+    let pointerMoved = false;
 
     const resize = () => {
       const { width, height } = containerElement.getBoundingClientRect();
@@ -252,6 +258,9 @@ onMounted(async () => {
       dragging = true;
       lastX = event.clientX;
       lastY = event.clientY;
+      pointerDownX = event.clientX;
+      pointerDownY = event.clientY;
+      pointerMoved = false;
       angularVelocity.set(0, 0);
       canvasElement.setPointerCapture(event.pointerId);
     };
@@ -260,6 +269,11 @@ onMounted(async () => {
       if (!dragging) return;
       const dx = event.clientX - lastX;
       const dy = event.clientY - lastY;
+      if (
+        Math.hypot(event.clientX - pointerDownX, event.clientY - pointerDownY) >
+        6
+      )
+        pointerMoved = true;
       angularVelocity.set(dy * 0.0035, dx * 0.0048);
       targetRotation.x = THREE.MathUtils.clamp(
         targetRotation.x + angularVelocity.x,
@@ -275,6 +289,14 @@ onMounted(async () => {
       if (canvasElement.hasPointerCapture(event.pointerId))
         canvasElement.releasePointerCapture(event.pointerId);
     };
+    const onPointerUp = (event: PointerEvent) => {
+      updatePointer(event);
+      raycaster.setFromCamera(pointer, camera);
+      const clickedObject = raycaster.intersectObject(panel, false)[0]?.object;
+      endDrag(event);
+      if (!pointerMoved && clickedObject === panel)
+        window.open("https://www.webonova.com/", "_blank", "noopener,noreferrer");
+    };
     const onPointerLeave = () => {
       pointer.set(10, 10);
       canvasElement.style.cursor = "grab";
@@ -285,7 +307,7 @@ onMounted(async () => {
     };
     canvasElement.addEventListener("pointerdown", onPointerDown);
     canvasElement.addEventListener("pointermove", onPointerMove);
-    canvasElement.addEventListener("pointerup", endDrag);
+    canvasElement.addEventListener("pointerup", onPointerUp);
     canvasElement.addEventListener("pointercancel", endDrag);
     canvasElement.addEventListener("pointerleave", onPointerLeave);
     document.addEventListener("visibilitychange", onVisibility);
@@ -363,7 +385,7 @@ onMounted(async () => {
       intersectionObserver.disconnect();
       canvasElement.removeEventListener("pointerdown", onPointerDown);
       canvasElement.removeEventListener("pointermove", onPointerMove);
-      canvasElement.removeEventListener("pointerup", endDrag);
+      canvasElement.removeEventListener("pointerup", onPointerUp);
       canvasElement.removeEventListener("pointercancel", endDrag);
       canvasElement.removeEventListener("pointerleave", onPointerLeave);
       document.removeEventListener("visibilitychange", onVisibility);

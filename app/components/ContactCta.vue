@@ -1,1 +1,26 @@
-<template><section id="contact" class="section-shell scroll-mt-24 !pt-10"><div class="relative overflow-hidden rounded-xl border border-orange/50 bg-gradient-to-r from-[#6f2108] via-[#9f2f09] to-[#32110b] p-7 sm:flex sm:items-center sm:justify-between sm:p-10"><div class="absolute inset-0 opacity-30 [background-image:radial-gradient(circle_at_65%_150%,#ff6a24_0,transparent_48%)]"></div><div class="relative"><h2 class="text-2xl font-semibold sm:text-3xl">Have a project in mind?</h2><p class="mt-2 text-sm text-orange-50/80">Let’s build something useful, memorable and built to last.</p></div><a class="button-primary relative mt-7 block text-center sm:mt-0" href="mailto:webonovasupport@gmail.com?subject=Project%20inquiry%20for%20James%20Adrian%20Merano">START A CONVERSATION <span aria-hidden="true">→</span></a></div></section></template>
+<template>
+  <section id="contact" class="section-shell scroll-mt-24 !pt-10">
+    <div
+      class="relative overflow-hidden rounded-xl border border-orange/50 bg-gradient-to-r from-[#6f2108] via-[#9f2f09] to-[#32110b] p-7 sm:flex sm:items-center sm:justify-between sm:p-10"
+    >
+      <div
+        class="absolute inset-0 opacity-30 [background-image:radial-gradient(circle_at_65%_150%,#ff6a24_0,transparent_48%)]"
+      ></div>
+      <div class="relative">
+        <h2 class="text-2xl font-semibold sm:text-3xl">
+          Have a project in mind?
+        </h2>
+        <p class="mt-2 text-sm text-orange-50/80">
+          Let’s build something useful, memorable and built to last.
+        </p>
+      </div>
+      <a
+        class="button-primary relative mt-7 block text-center sm:mt-0"
+        href="mailto:engr.drei29@gmail.com?subject=Project%20inquiry%20for%20James%20Adrian%20Merano"
+      >
+        START A CONVERSATION
+        <span aria-hidden="true">→</span>
+      </a>
+    </div>
+  </section>
+</template>
