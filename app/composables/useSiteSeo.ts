@@ -14,6 +14,7 @@ export const useSiteSeo = (options: SiteSeoOptions) => {
   const siteUrl = normalizeSiteUrl(config.public.siteUrl as string);
   const canonicalUrl = new URL(options.path, `${siteUrl}/`).toString();
   const imageUrl = new URL(site.socialImage, `${siteUrl}/`).toString();
+  const logoUrl = new URL(site.logo, `${siteUrl}/`).toString();
   const noindex = Boolean(config.public.isPreview) || options.noindex;
   const robots = noindex ? "noindex, nofollow" : "index, follow";
   const socialDescription = options.socialDescription ?? options.description;
@@ -30,6 +31,7 @@ export const useSiteSeo = (options: SiteSeoOptions) => {
     ogDescription: socialDescription,
     ogUrl: canonicalUrl,
     ogImage: imageUrl,
+    ogImageSecureUrl: imageUrl,
     ogImageWidth: 1200,
     ogImageHeight: 630,
     ogImageType: "image/png",
@@ -43,6 +45,7 @@ export const useSiteSeo = (options: SiteSeoOptions) => {
 
   useHead({
     link: [{ key: "canonical", rel: "canonical", href: canonicalUrl }],
+    meta: [{ key: "og:logo", property: "og:logo", content: logoUrl }],
   });
 
   return { canonicalUrl, imageUrl, siteUrl };

@@ -2,9 +2,9 @@
 definePageMeta({ layout: "default" });
 const { canonicalUrl } = useSiteSeo({
   path: "/",
-  title: "JAM’s Tech | Full-Stack Developer",
-  description: "James Adrian Merano is a full-stack developer building fast, accessible and conversion-ready web applications, business websites and digital experiences.",
-  socialDescription: "Full-stack development focused on fast, accessible and conversion-ready digital products.",
+  title: "James Adrian Merano | Full-Stack Developer",
+  description: "Portfolio of James Adrian Merano, a full-stack developer building fast, accessible and conversion-ready web applications and business websites.",
+  socialDescription: "James Adrian Merano is a full-stack developer building fast, accessible and conversion-ready digital products.",
 });
 
 useHead({

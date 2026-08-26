@@ -8,7 +8,8 @@ export const site = {
   socialDescription:
     "Full-stack development focused on fast, accessible and conversion-ready digital products.",
   socialImage: "/og-image.png",
-  socialImageAlt: "JAM’s Tech — Full-Stack Developer portfolio",
+  socialImageAlt: "James Adrian Merano — Full-Stack Developer",
+  logo: "/images/jams-tech-logo.png",
 } as const;
 
 export const normalizeSiteUrl = (value: string) => value.replace(/\/+$/, "");
