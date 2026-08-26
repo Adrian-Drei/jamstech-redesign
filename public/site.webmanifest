@@ -1,0 +1,21 @@
+{
+  "name": "JAM's Tech",
+  "short_name": "JAM's Tech",
+  "description": "Portfolio of full-stack developer James Adrian Merano.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#07111B",
+  "theme_color": "#07111B",
+  "icons": [
+    {
+      "src": "/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

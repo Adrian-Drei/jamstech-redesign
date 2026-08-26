@@ -397,8 +397,7 @@ onBeforeUnmount(() => cleanup?.());
   <div
     ref="container"
     class="relative min-h-[320px] w-full overflow-hidden sm:min-h-[430px] lg:min-h-[580px]"
-    role="img"
-    aria-label="Interactive Webonova technology ecosystem. Drag to rotate and explore the stack."
+    aria-hidden="true"
   >
     <canvas
       v-show="!failed"

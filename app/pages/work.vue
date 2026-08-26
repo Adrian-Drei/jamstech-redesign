@@ -2,18 +2,12 @@
 import { projects, type ProjectCategory } from "~/data/projects";
 
 definePageMeta({ layout: "default" });
-useSeoMeta({
+const { canonicalUrl } = useSiteSeo({
+  path: "/work",
   title: "Selected Work | James Adrian Merano",
   description: "Explore selected web applications, business websites and digital experiences designed and developed by James Adrian Merano.",
-  ogTitle: "Selected Work | James Adrian Merano",
-  ogDescription: "Explore selected web applications, business websites and digital experiences designed and developed by James Adrian Merano.",
-  ogImage: "/og.png",
-  twitterCard: "summary_large_image",
-  twitterTitle: "Selected Work | James Adrian Merano",
-  twitterDescription: "Selected web applications, business websites and digital experiences by James Adrian Merano.",
-  twitterImage: "/og.png",
+  socialDescription: "Selected web applications, business websites and digital experiences by James Adrian Merano.",
 });
-useHead({ link: [{ rel: "canonical", href: "https://jamstech.vercel.app/work" }] });
 
 type FilterValue = "all" | ProjectCategory;
 const filters: { label: string; value: FilterValue }[] = [
@@ -25,6 +19,29 @@ const activeFilter = ref<FilterValue>("all");
 const featured = projects.find((project) => project.featured)!;
 const visibleProjects = computed(() => projects.filter((project) => !project.featured && (activeFilter.value === "all" || project.categories.includes(activeFilter.value))));
 const showFeatured = computed(() => activeFilter.value === "all" || featured.categories.includes(activeFilter.value as ProjectCategory));
+
+useHead({
+  script: [{
+    key: "work-schema",
+    type: "application/ld+json",
+    innerHTML: JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      name: "Selected Work | James Adrian Merano",
+      url: canonicalUrl,
+      mainEntity: {
+        "@type": "ItemList",
+        itemListElement: projects.map((project, index) => ({
+          "@type": "ListItem",
+          position: index + 1,
+          name: project.title,
+          description: project.description,
+          ...(project.url ? { url: project.url } : {}),
+        })),
+      },
+    }),
+  }],
+});
 </script>
 
 <template>

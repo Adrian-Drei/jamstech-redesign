@@ -24,7 +24,7 @@ async function toggleExperience() {
           class="mt-5 text-4xl font-semibold leading-tight tracking-[-.04em] sm:text-5xl"
         >
           Experience built
-          <br />
+          <br>
           through real products.
         </h2>
         <p class="mt-6 max-w-lg leading-7 text-slate-400">

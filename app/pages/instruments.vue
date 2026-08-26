@@ -2,6 +2,12 @@
 definePageMeta({
   layout: "default",
 });
+useSiteSeo({
+  path: "/instruments",
+  title: "Instruments",
+  description: "Private instrument management utility.",
+  noindex: true,
+});
 const client = useSupabaseClient();
 const intruments = ref([]);
 const name = ref("");
