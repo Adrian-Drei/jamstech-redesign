@@ -6,20 +6,20 @@ withDefaults(defineProps<{ project: Project; headingLevel?: "h2" | "h3" }>(), {
 </script>
 <template>
   <article
-    class="group project-surface grid overflow-hidden p-3  sm:p-4"
+    class="group project-surface overflow-hidden p-3 flex flex-col justify-between sm:p-4"
   >
-    <ProjectPreview
-      :variant="project.preview"
-      :title="project.title"
-      :image="project.image"
-    />
-    <div class="flex flex-col  py-5  sm:py-3">
-      <component :is="headingLevel" class="text-xl font-semibold">
+    <div>
+      <ProjectPreview
+        :variant="project.preview"
+        :title="project.title"
+        :image="project.image"
+      />
+      <component :is="headingLevel" class="text-xl mb-3 mt-5 font-semibold">
         {{ project.title }}
       </component>
       <span
         v-if="project.badge"
-        class="mt-2 w-fit rounded border border-orange/40 px-2 py-1 text-[10px] font-semibold text-orange"
+        class="mt-3 w-fit rounded border border-orange/40 px-2 py-1 text-[10px] font-semibold text-orange"
       >
         {{ project.badge }}
       </span>
@@ -30,16 +30,16 @@ withDefaults(defineProps<{ project: Project; headingLevel?: "h2" | "h3" }>(), {
       <p class="mt-4 text-xs leading-5 text-slate-400">
         {{ project.stack.join(" · ") }}
       </p>
-      <a
-        v-if="project.url"
-        class="project-link mt-auto pt-7"
-        :href="project.url"
-        target="_blank"
-        rel="noopener noreferrer"
-        :aria-label="`View ${project.title} project (opens in a new tab)`"
-      >
-        VIEW PROJECT ↗
-      </a>
     </div>
+    <a
+      v-if="project.url"
+      class="project-link mt-auto pt-7"
+      :href="project.url"
+      target="_blank"
+      rel="noopener noreferrer"
+      :aria-label="`View ${project.title} project (opens in a new tab)`"
+    >
+      VIEW PROJECT ↗
+    </a>
   </article>
 </template>

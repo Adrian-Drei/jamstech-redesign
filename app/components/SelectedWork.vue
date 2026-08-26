@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { projects } from "~/data/projects";
 const previewProjects = projects.filter((project) =>
-  ["lionspriderx", "travel-ai-planner"].includes(project.slug),
+  ["lionspriderx", "totalmalerx", "travel-ai-planner"].includes(project.slug),
 );
 </script>
 <template>

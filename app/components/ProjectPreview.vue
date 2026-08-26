@@ -2,15 +2,109 @@
 defineProps<{ variant: string; title: string; image?: string }>();
 </script>
 <template>
-  <div v-if="image" class="relative aspect-[16/10] overflow-hidden rounded-lg border border-white/10 bg-[#081722]" role="img" :aria-label="`${title} website preview`">
-    <img :src="image" :alt="`${title} website screenshot`" class="h-full w-full object-cover object-top transition duration-500 group-hover:scale-[1.02] motion-reduce:transition-none" loading="lazy" decoding="async">
+  <div
+    v-if="image"
+    class="relative overflow-hidden rounded-lg border border-white/10 bg-[#081722] leading-none"
+    role="img"
+    :aria-label="`${title} website preview`"
+  >
+    <img
+      :src="image"
+      :alt="`${title} website screenshot`"
+      class="block h-auto w-full object-cover object-top transition duration-500 group-hover:scale-[1.02] motion-reduce:transition-none"
+      loading="lazy"
+      decoding="async"
+    />
   </div>
-  <div v-else class="relative aspect-[16/10] overflow-hidden rounded-lg border border-white/10 bg-[#081722] p-4 sm:p-5" :class="`preview-${variant}`" role="img" :aria-label="`${title} website preview`">
-    <div class="flex items-center justify-between text-[8px] font-bold tracking-wide sm:text-[10px]"><span>{{ variant === 'wedding' ? 'James & Anna' : title }}</span><div class="hidden gap-4 text-[7px] font-medium opacity-70 sm:flex"><span>Services</span><span>Work</span><span>About</span></div><span class="rounded border border-current/20 px-2 py-1 text-[7px]">{{ variant === 'wedding' ? 'RSVP' : 'GET STARTED' }}</span></div>
-    <div class="mt-[8%] max-w-[58%]"><p class="text-[clamp(.95rem,2.1vw,1.75rem)] font-semibold leading-[1.08]"><template v-if="variant === 'medical'">Quality care from licensed doctors.</template><template v-else-if="variant === 'travel'">Plan smarter trips with AI.</template><template v-else-if="variant === 'electrone'">Industrial solutions. Engineered to perform.</template><template v-else-if="variant === 'resort'">Unwind in private paradise.</template><template v-else-if="variant === 'wedding'">We’re getting married!</template><template v-else-if="variant === 'booking'">Find the perfect place to stay.</template><template v-else>Your business deserves more than just a website.</template></p><div class="mt-4 h-2 w-3/4 rounded-full bg-current opacity-15"></div><div class="mt-2 h-2 w-1/2 rounded-full bg-current opacity-10"></div><span class="mt-5 inline-block rounded bg-orange px-3 py-2 text-[7px] font-bold text-white">VIEW OUR WORK</span></div>
-    <div class="absolute bottom-4 right-4 h-[48%] w-[38%] rounded-lg border border-white/15 bg-gradient-to-br from-white/15 to-transparent p-2 shadow-2xl"><div class="grid h-full grid-cols-3 items-end gap-1"><i class="h-1/3 rounded-sm bg-orange/50"></i><i class="h-3/4 rounded-sm bg-cyan-400/30"></i><i class="h-1/2 rounded-sm bg-orange/70"></i></div></div>
+  <div
+    v-else
+    class="relative aspect-[16/10] overflow-hidden rounded-lg border border-white/10 bg-[#081722] p-4 sm:p-5"
+    :class="`preview-${variant}`"
+    role="img"
+    :aria-label="`${title} website preview`"
+  >
+    <div
+      class="flex items-center justify-between text-[8px] font-bold tracking-wide sm:text-[10px]"
+    >
+      <span>{{ variant === "wedding" ? "James & Anna" : title }}</span>
+      <div class="hidden gap-4 text-[7px] font-medium opacity-70 sm:flex">
+        <span>Services</span>
+        <span>Work</span>
+        <span>About</span>
+      </div>
+      <span class="rounded border border-current/20 px-2 py-1 text-[7px]">
+        {{ variant === "wedding" ? "RSVP" : "GET STARTED" }}
+      </span>
+    </div>
+    <div class="mt-[8%] max-w-[58%]">
+      <p
+        class="text-[clamp(.95rem,2.1vw,1.75rem)] font-semibold leading-[1.08]"
+      >
+        <template v-if="variant === 'medical'">
+          Quality care from licensed doctors.
+        </template>
+        <template v-else-if="variant === 'travel'">
+          Plan smarter trips with AI.
+        </template>
+        <template v-else-if="variant === 'electrone'">
+          Industrial solutions. Engineered to perform.
+        </template>
+        <template v-else-if="variant === 'resort'">
+          Unwind in private paradise.
+        </template>
+        <template v-else-if="variant === 'wedding'">
+          We’re getting married!
+        </template>
+        <template v-else-if="variant === 'booking'">
+          Find the perfect place to stay.
+        </template>
+        <template v-else>
+          Your business deserves more than just a website.
+        </template>
+      </p>
+      <div class="mt-4 h-2 w-3/4 rounded-full bg-current opacity-15"></div>
+      <div class="mt-2 h-2 w-1/2 rounded-full bg-current opacity-10"></div>
+      <span
+        class="mt-5 inline-block rounded bg-orange px-3 py-2 text-[7px] font-bold text-white"
+      >
+        VIEW OUR WORK
+      </span>
+    </div>
+    <div
+      class="absolute bottom-4 right-4 h-[48%] w-[38%] rounded-lg border border-white/15 bg-gradient-to-br from-white/15 to-transparent p-2 shadow-2xl"
+    >
+      <div class="grid h-full grid-cols-3 items-end gap-1">
+        <i class="h-1/3 rounded-sm bg-orange/50"></i>
+        <i class="h-3/4 rounded-sm bg-cyan-400/30"></i>
+        <i class="h-1/2 rounded-sm bg-orange/70"></i>
+      </div>
+    </div>
   </div>
 </template>
 <style scoped>
-.preview-medical{color:#10213d;background:linear-gradient(135deg,#f7fbff,#b8d4ee)}.preview-travel{color:#11203a;background:linear-gradient(135deg,#f4f9ff,#9dc4df)}.preview-electrone{background:linear-gradient(135deg,#f7f8f8,#8c9ca5);color:#10171c}.preview-resort{background:linear-gradient(135deg,rgba(5,20,23,.15),rgba(0,0,0,.7)),linear-gradient(145deg,#b66f39,#13454b)}.preview-wedding{background:linear-gradient(135deg,#fffaf2,#ead8ca);color:#4a332c;font-family:Georgia,serif}.preview-booking{background:linear-gradient(135deg,#0b3442,#176578)}
+.preview-medical {
+  color: #10213d;
+  background: linear-gradient(135deg, #f7fbff, #b8d4ee);
+}
+.preview-travel {
+  color: #11203a;
+  background: linear-gradient(135deg, #f4f9ff, #9dc4df);
+}
+.preview-electrone {
+  background: linear-gradient(135deg, #f7f8f8, #8c9ca5);
+  color: #10171c;
+}
+.preview-resort {
+  background:
+    linear-gradient(135deg, rgba(5, 20, 23, 0.15), rgba(0, 0, 0, 0.7)),
+    linear-gradient(145deg, #b66f39, #13454b);
+}
+.preview-wedding {
+  background: linear-gradient(135deg, #fffaf2, #ead8ca);
+  color: #4a332c;
+  font-family: Georgia, serif;
+}
+.preview-booking {
+  background: linear-gradient(135deg, #0b3442, #176578);
+}
 </style>

@@ -49,5 +49,6 @@ export const projects: Project[] = [
     preview: "medical",
     image: "/images/projects/34.png",
   },
+  
   ...portfolioProjects,
 ];
