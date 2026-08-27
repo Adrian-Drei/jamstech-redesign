@@ -137,7 +137,7 @@ useHead({
               <p
                 class="text-[10px] font-bold uppercase tracking-wide text-orange"
               >
-                CURRENT COMPANY · WEB DESIGN &amp; DEVELOPMENT
+                WEB DESIGN &amp; DEVELOPMENT
               </p>
               <h2 class="mt-4 text-4xl font-semibold">Webonova</h2>
               <p class="mt-6 text-2xl leading-8 text-slate-300">

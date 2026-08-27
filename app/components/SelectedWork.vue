@@ -24,7 +24,7 @@ const previewProjects = projects.filter((project) =>
       <div class="flex flex-col justify-center p-7 sm:p-10">
         <h3 class="text-3xl font-semibold">Webonova</h3>
         <p class="mt-2 text-sm text-orange">
-          Current Company · Web Design &amp; Development
+          Web Design &amp; Development
         </p>
         <p class="mt-7 text-xl leading-8 text-slate-300">
           Modern websites for ambitious businesses.
