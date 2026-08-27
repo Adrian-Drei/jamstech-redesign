@@ -45,7 +45,18 @@ export const useSiteSeo = (options: SiteSeoOptions) => {
 
   useHead({
     link: [{ key: "canonical", rel: "canonical", href: canonicalUrl }],
-    meta: [{ key: "og:logo", property: "og:logo", content: logoUrl }],
+    meta: [
+      { key: "og:logo", property: "og:logo", content: logoUrl },
+      ...(config.public.facebookAppId
+        ? [
+            {
+              key: "fb:app_id",
+              property: "fb:app_id",
+              content: config.public.facebookAppId as string,
+            },
+          ]
+        : []),
+    ],
   });
 
   return { canonicalUrl, imageUrl, siteUrl };

@@ -1,4 +1,5 @@
 const siteUrl = (process.env.NUXT_PUBLIC_SITE_URL || "https://jamstech.vercel.app").replace(/\/+$/, "");
+const facebookAppId = process.env.NUXT_PUBLIC_FACEBOOK_APP_ID || "";
 const isPreview = Boolean(process.env.VERCEL_ENV && process.env.VERCEL_ENV !== "production");
 
 export default defineNuxtConfig({
@@ -13,7 +14,7 @@ export default defineNuxtConfig({
   ],
   css: ["~/assets/css/main.css"],
   runtimeConfig: {
-    public: { siteUrl, isPreview },
+    public: { siteUrl, facebookAppId, isPreview },
   },
   routeRules: isPreview
     ? { "/**": { headers: { "X-Robots-Tag": "noindex, nofollow" } } }
